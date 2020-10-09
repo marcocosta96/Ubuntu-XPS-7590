@@ -128,4 +128,4 @@ Installing [Fusuma](https://github.com/iberianpig/fusuma), a multitouch gesture 
     You can simply copy the file `touchpad-gestures/config.yml` in `~/.config/fusuma/config.yml`.
 
 ### GRUB2 Themes
-Go [there](https://github.com/marcocosta96/Ubuntu-XPS-7590/grub2-themes/README.md) for instructions.
+Go [there](https://https://github.com/vinceliuice/grub2-themes) for instructions.
