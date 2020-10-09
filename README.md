@@ -65,6 +65,28 @@ $ Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeI
 ```
 
 ## **Extra**
+### **Install CUDA 10.1**
+Install CUDA 10.1 with the following command:
+
+```
+$ sudo apt install nvidia-cuda-toolkit
+```
+Then download the CuDNN 7.6.5 and TensorRT libraries from [here](https://drive.google.com/drive/folders/1-oFp9BJNyLkr7iAc1EKn4slokbADCwIW?usp=sharing), and install with the command
+```
+$ sudo dpkg -i libcudnn* nv-*
+```
+Finally edit the `~/.bashrc` file adding the following lines:
+```
+# CUDA
+CUDA_version=10.1
+if [ -d "/usr/local/cuda-${CUDA_version}/bin/" ]; then
+    export PATH=/usr/local/cuda-${CUDA_version}/bin${PATH:+:${PATH}}
+    export LD_LIBRARY_PATH=/usr/local/cuda-${CUDA_version}/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-${CUDA_version}/extras/CUPTI/lib64
+fi
+```
+Reboot your pc.
+
 ### **Check Temperatures**
 We’re going to use a GUI tool, *Psensor*, that allows you to monitor hardware temperature on Linux.
 Before you install *Psensor*, you need to install and configure *lm-sensors*, a command-line utility for hardware monitoring. If you want to measure hard disk temperature, you need to install *hddtemp* as well. To install these tools, run the following command in a terminal:
