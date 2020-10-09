@@ -1,3 +1,6 @@
 [submodule "oled-brightness/oled-linux"]
 	path = oled-brightness/oled-linux
 	url = git@github.com:lawleagle/oled-linux.git
+[submodule "grub2-themes"]
+	path = grub2-themes
+	url = git@github.com:vinceliuice/grub2-themes.git
