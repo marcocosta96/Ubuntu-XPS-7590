@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/marco/.config/oled-linux/oled-linux.sh
+X-GNOME-Autostart-enabled=true
+Name=OledScript
+Comment=Brightness fix
+Terminal=false
+GenericName=OLED fix

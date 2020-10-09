@@ -1,0 +1,3 @@
+[submodule "oled-brightness/oled-linux"]
+	path = oled-brightness/oled-linux
+	url = git@github.com:lawleagle/oled-linux.git
