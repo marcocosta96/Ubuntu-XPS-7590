@@ -121,7 +121,9 @@ $ rmvirtualenv name_of_your_env
 - Show available virtual environment:
 ```
 $ workon
+```
 or
+```
 $ lsvirtualenv
 ```
 - Copy existing virtual environment to a new virtual environment:
@@ -213,6 +215,24 @@ $ chmod +x ubuntu-20.04-change-gdm-background
 $ sudo ./ubuntu-20.04-change-gdm-background /path/to/image
 ```
 
+### **Add a New Notification Sound**
+First we need our sound: `stereo`, `.wav` or `.ogg`, sample rate of `44100 Hz`.
+
+If you like, move it to the default folder for system sounds `/usr/share/sounds/`, but having it somewhere else may work.
+
+Now we edit a config file, (you can replace gedit for another text editor: vim, emacs, nano, kate, etc...)
+```
+$ sudo gedit /usr/share/gnome-control-center/sounds/gnome-sounds-default.xml
+```
+Go to the end of the text, and after the `</sounds>` tag add this:
+```
+<sound deleted="false">
+  <name>Name</name>
+  <filename>/path/to/your/sound.ogg</filename>
+</sound>
+```
+All that’s left is to open Preferences > Sound (or gnome-volume-control at the command line) and select the new entry in the list of possible alert sounds.
+
 ### **GRUB Customizer**
 Install with the command:
 ```
@@ -221,4 +241,8 @@ $ sudo apt install grub-customizer
 
 ### [**GRUB2 Themes**](https://github.com/vinceliuice/grub2-themes)
 ### [**Customizations**](https://www.gnome-look.org/browse/cat/)
+### [**Mount Partition at Startup**](https://www.fosslinux.com/4216/how-to-automount-hard-disk-partitions-in-ubuntu.htm)
 ### [**Face Unlock**](https://itsfoss.com/face-unlock-ubuntu/)
+### [**Docker**](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04)
+### [**Scrcpy (Control Android Devices)**](https://www.linuxuprising.com/2019/03/control-android-devices-from-your.html)
+### [**OpenFortiGUI**](https://github.com/theinvisible/openfortigui)
