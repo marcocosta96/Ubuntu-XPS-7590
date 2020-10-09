@@ -51,6 +51,8 @@ How to fix some Ubuntu issues on XPS 7590
 2. Copy `oled-brightness/oled-linux.desktop` in `/home/<your_name>/.config/autostart/`
 3. Reboot
 
+    Go [here](https://github.com/lawleagle/oled-linux) for more informations.
+
 ## Extra
 ### Touchpad gestures
 Installing [Fusuma](https://github.com/iberianpig/fusuma), a multitouch gesture recognizer. This gem makes your linux able to recognize swipes or pinchs and assign commands to them.
