@@ -1,14 +1,8 @@
 # Ubuntu on XPS 7590
 How to fix some Ubuntu issues on XPS 7590
 
-## CPU power management
-Without further configuration the CPU will run quite hot and will quickly drain the battery. 
-We are going to Install:
-1.  [powertop](https://01.org/powertop/overview)
-2.  [thermald](https://01.org/linux-thermal-daemon)
-3.  [TLP](https://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html#installation)
-
-### How to do:
+## Fix issues
+### CPU power management
 1. Open a terminal
 2. Run the following command:
     ```
@@ -45,29 +39,21 @@ We are going to Install:
     $ sudo tlp start
     ```
 
-## Suspend Draining battery fast
-By default, the very inefficient `s2idle` suspend variant is incorrectly selected. This is probably due to the BIOS. The much more efficient `deep` variant should be selected instead.
-
-### How to do:
+### Fast Suspend Battery Draining
 1. Open a terminal window
 2. Run the following commands:
     ```
     $ sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="[^"]*/& mem_sleep_default=deep/' /etc/default/grub
     $ update-grub
 
-## Screen Brightness (OLED)
-When pressing the function keys to change the screen brightness, you will see the Ubuntu brightness icon and its brightness bar changing. However, the brightness of the screen will not change. Apparently, Ubuntu tries to change the background brightness of the screen. Since OLED screens do not have a background illumination, nothing happens.
-This is undesirable. Not only will the screen often be too bright, it will also age the display faster. 
-
-### How to do:
+### Screen Brightness (OLED)
 1. Copy `oled-brightness/oled-linux` folder in `/home/<your_name>/.config/`
 2. Copy `oled-brightness/oled-linux.desktop` in `/home/<your_name>/.config/autostart/`
 3. Reboot
 
-## Touchpad gestures
+## Extra
+### Touchpad gestures
 Installing [Fusuma](https://github.com/iberianpig/fusuma), a multitouch gesture recognizer. This gem makes your linux able to recognize swipes or pinchs and assign commands to them.
-
-### How to do:
 1. Grant permission to read the touchpad device
 
     **IMPORTANT**: You **MUST** be a member of the **INPUT** group to read touchpad by Fusuma.
