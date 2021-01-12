@@ -43,13 +43,14 @@ How to fix some Ubuntu 20.04 issues on XPS 7590 and some useful tutorials.
 1. Open a terminal window
 2. Run the following commands:
     ```
-    $ sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="[^"]*/& mem_sleep_default=deep/' /etc/default/grub
+    $ sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="[^"]*/& mem_sleep_default=deep/' /etc/default/grub
     $ update-grub
 
 ### **Screen Brightness (OLED)**
-1. Copy `oled-brightness/oled-linux` folder in `/home/<your_name>/.config/`
-2. Copy `oled-brightness/oled-linux.desktop` in `/home/<your_name>/.config/autostart/`
-3. Reboot
+1. Install *inotifywait* with the command `sudo apt install inotify-tools`
+2. Copy `oled-brightness/oled-linux/oled-linux.sh` in `/home/<your_name>/.config/oled-linux/`
+3. Copy `oled-brightness/oled-linux.desktop` in `/home/<your_name>/.config/autostart/`
+4. Reboot
 
     Go [here](https://github.com/lawleagle/oled-linux) for more informations.
 
@@ -109,10 +110,10 @@ Once installed, run the application by looking for it in the Unity Dash. On the 
 
 ### **Set Up a Python Virtual Environment**
 ```
-$ mkdir ~/.virtualenv
+$ mkdir ~/.virtualenvs
 $ sudo apt install python3-pip
 $ sudo pip3 install virtualenv
-$ pip3 install virtualenvwrapper
+$ sudo pip3 install virtualenvwrapper
 ```
 Then edit the `~/.bashrc` file adding the following lines:
 ```
@@ -198,6 +199,8 @@ Installing [Fusuma](https://github.com/iberianpig/fusuma), a multitouch gesture 
     $ sudo apt-get install xdotool
     ```
 
+6. Add fusuma in autostart using `sudo fusuma -d`, name and description is up to you
+
     #### Touchpad not working in GNOME
 
     Ensure the touchpad events are being sent to the GNOME desktop by running the following command:
@@ -231,12 +234,13 @@ Installing [Fusuma](https://github.com/iberianpig/fusuma), a multitouch gesture 
     You can simply copy the file `touchpad-gestures/config.yml` in `~/.config/fusuma/config.yml`.
 
 ### **Change GDM Background (Login Image)**
-The script `ubuntu-20.04-change-gdm-background` automates the process of setting an image in the GNOME Display Manager 3 background which comes by default with Ubuntu version 20.04 Focal Fossa.
+The script `change-gdm-background` automates the process of setting an image in the GNOME Display Manager 3 background which comes by default with Ubuntu version 20.04 Focal Fossa.
 ```
 $ sudo apt install libglib2.0-dev-bin
-$ chmod +x ubuntu-20.04-change-gdm-background
-$ sudo ./ubuntu-20.04-change-gdm-background /path/to/image
+$ chmod +x change-gdm-background
+$ sudo ./change-gdm-background /path/to/image
 ```
+Go [here](https://github.com/thiggy01/change-gdm-background) for more informations.
 
 ### **Add a New Notification Sound**
 First we need our sound: `stereo`, `.wav` or `.ogg`, sample rate of `44100 Hz`.
