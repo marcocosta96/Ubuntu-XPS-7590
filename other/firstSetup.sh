@@ -55,6 +55,12 @@ sudo dpkg -i ./google-chrome-stable_current_amd64.deb
 sudo apt-get install -f -y
 rm ./google-chrome-stable_current_amd64.deb
 
+# Mailspring
+wget -c https://updates.getmailspring.com/download?platform=linuxDeb -O mailspring.deb
+sudo dpkg -i ./mailspring.deb
+sudo apt-get install -f -y
+rm ./mailspring.deb
+
 # VS Code
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
