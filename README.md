@@ -160,8 +160,8 @@ Once installed, run the application by looking for it in the Unity Dash. On the 
 ```
 $ mkdir ~/.virtualenvs
 $ sudo apt install python3-pip
-$ sudo pip3 install virtualenv
-$ sudo pip3 install virtualenvwrapper
+$ pip3 install virtualenv
+$ pip3 install virtualenvwrapper
 ```
 Then edit the `~/.bashrc` file adding the following lines:
 ```
