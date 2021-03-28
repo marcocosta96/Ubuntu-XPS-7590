@@ -66,20 +66,68 @@ $ Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeI
 ```
 
 ## **Extra**
-### **Install CUDA 10.1**
-Install CUDA 10.1 with the following command:
+### **Install NVidia drivers**
+#### Remove Previous Installations
+In case you installed NVIDIA driver before, it’s very recommended, must remove previous installation.
+```
+$ sudo apt-get purge nvidia*
+```
+#### Download the NVIDIA Driver
+Latest NVIDIA drivers can be download from their [official website](https://www.nvidia.com/object/unix.html)
+#### Install the Dependencies
+Other library as dependencies is required if we want to install NVIDIA driver via runfile. We need to install this dependencies first.
+```
+$ sudo apt-get install build-essential gcc-multilib dkms
+```
+#### Blacklist the Nouveau Driver
+Edit `/etc/modprobe.d/blacklist-nouveau.conf`
+```
+$ sudo nano /etc/modprobe.d/blacklist-nouveau.conf
+```
+Add the following lines:
+```
+blacklist nouveau
+options nouveau modeset=0
+```
+Then run the following commands:
+```
+$ sudo update-initramfs -u
+$ sudo reboot
+```
+#### Stop gdm Service
+After reboot/restart, open console from login page (ctrl+alt+f2). and stop the gdm service using this command:
+```
+$ sudo systemctl stop gdm
+```
+#### Run the Installer
+Enter the directory where you saved the downloaded NVIDIA driver installer, and run this commands:
+```
+$ chmod +x NVIDIA-Linux-x86_64-xxx.xx.run
+$ sudo ./NVIDIA-Linux-x86_64-xxx.xx.run --dkms -s
+```
+where xxx.xx is the downloaded version (ex: NVIDIA-Linux-x86_64-460.67.run). -s is for silent installation, and --dkms is used for register dkms module into the kernel. 
 
+Finally reboot the machine.
+
+### **Install Cuda 11.0**
+#### Download files
+Download files from [here](https://drive.google.com/drive/folders/1-oFp9BJNyLkr7iAc1EKn4slokbADCwIW?usp=sharing)
+#### Install Cuda 11.0
+Enter the directory where you saved the downloaded files, and install CUDA 11.0 with the following commands:
 ```
-$ sudo apt install nvidia-cuda-toolkit
+$ chmod +x cuda_11.0.3_450.51.06_linux.run
+$ sudo ./cuda_11.0.3_450.51.06_linux.run
 ```
-Then download the CuDNN 7.6.5 and TensorRT libraries from [here](https://drive.google.com/drive/folders/1-oFp9BJNyLkr7iAc1EKn4slokbADCwIW?usp=sharing), and install with the command
+#### Install CuDNN and TensorRT libraries
+In the same directory, run the following command:
 ```
 $ sudo dpkg -i libcudnn* nv-*
 ```
+#### Edit .bashrc
 Finally edit the `~/.bashrc` file adding the following lines:
 ```
 # CUDA
-CUDA_version=10.1
+CUDA_version=11.0
 if [ -d "/usr/local/cuda-${CUDA_version}/bin/" ]; then
     export PATH=/usr/local/cuda-${CUDA_version}/bin${PATH:+:${PATH}}
     export LD_LIBRARY_PATH=/usr/local/cuda-${CUDA_version}/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
