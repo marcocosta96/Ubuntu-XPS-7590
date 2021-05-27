@@ -109,14 +109,14 @@ where xxx.xx is the downloaded version (ex: NVIDIA-Linux-x86_64-460.67.run). -s 
 
 Finally reboot the machine.
 
-### **Install Cuda 11.0**
+### **Install Cuda 11.2**
 #### Download files
-Download files from [here](https://drive.google.com/drive/folders/1-oFp9BJNyLkr7iAc1EKn4slokbADCwIW?usp=sharing)
-#### Install Cuda 11.0
+Download files from [here](https://drive.google.com/drive/folders/1tXrcoQCVs8NErqM2ZCR4RtSrf235w15e?usp=sharing)
+#### Install Cuda 11.2
 Enter the directory where you saved the downloaded files, and install CUDA 11.0 with the following commands:
 ```
-$ chmod +x cuda_11.0.3_450.51.06_linux.run
-$ sudo ./cuda_11.0.3_450.51.06_linux.run
+$ chmod +x cuda_11.2.2_460.32.03_linux.run
+$ sudo ./cuda_11.2.2_460.32.03_linux.run
 ```
 #### Install CuDNN and TensorRT libraries
 In the same directory, run the following command:
@@ -127,7 +127,7 @@ $ sudo dpkg -i libcudnn* nv-*
 Finally edit the `~/.bashrc` file adding the following lines:
 ```
 # CUDA
-CUDA_version=11.0
+CUDA_version=11.2
 if [ -d "/usr/local/cuda-${CUDA_version}/bin/" ]; then
     export PATH=/usr/local/cuda-${CUDA_version}/bin${PATH:+:${PATH}}
     export LD_LIBRARY_PATH=/usr/local/cuda-${CUDA_version}/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
